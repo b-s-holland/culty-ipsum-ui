@@ -4,40 +4,157 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="description" content="Culty Ipsum Generator - Educational tool for identifying manipulative language patterns through satirical text generation and red flag detection." />
+    <meta name="keywords" content="cult, manipulation, language analysis, satire, education, awareness" />
+    <meta name="author" content="Culty Ipsum" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Culty Ipsum Generator" />
+    <meta property="og:description" content="Educational tool for identifying manipulative language patterns through satirical text generation and red flag detection." />
+    <meta property="og:url" content="https://culty-ipsum.vercel.app" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Culty Ipsum Generator" />
+    <meta property="twitter:description" content="Educational tool for identifying manipulative language patterns through satirical text generation and red flag detection." />
+    
+    <!-- Preconnect to improve loading performance -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Critical CSS inlined for faster initial paint -->
+    <style>
+      /* Critical above-the-fold styles */
+      * {
+        box-sizing: border-box;
+      }
+      
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(135deg, #581c87, #1e3a8a, #312e81);
+        min-height: 100vh;
+        color: white;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Loading skeleton to prevent CLS */
+      .loading-skeleton {
+        background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: 8px;
+      }
+      
+      @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+    
+    <title>Culty Ipsum Generator - Educational Manipulation Detection Tool</title>
+    
+    <!-- Tailwind CSS CDN for quick deployment -->
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="text-align: center; padding: 2rem; background: #1f2937; color: #e5e7eb;">
+        <h1>🗣️ CULTY IPSUM</h1>
+        <p>You need to enable JavaScript to use this educational tool.</p>
+        <p>This app helps identify manipulative language patterns through satirical text generation.</p>
+      </div>
+    </noscript>
+    
+    <!-- Loading fallback -->
+    <div id="loading-fallback" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #581c87, #1e3a8a, #312e81); z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+      <div class="loading-skeleton" style="width: 300px; height: 60px; margin-bottom: 20px;"></div>
+      <div class="loading-skeleton" style="width: 200px; height: 20px; margin-bottom: 10px;"></div>
+      <div class="loading-skeleton" style="width: 250px; height: 20px;"></div>
+    </div>
+    
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    
+    <!-- Performance monitoring -->
+    <script>
+      // Simple performance monitoring
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingFallback = document.getElementById('loading-fallback');
+          if (loadingFallback) {
+            loadingFallback.style.display = 'none';
+          }
+        }, 100);
+      });
+      
+      // Report Core Web Vitals
+      function getCLS(onPerfEntry) {
+        if (onPerfEntry && onPerfEntry instanceof Function) {
+          import('web-vitals').then(({ getCLS }) => {
+            getCLS(onPerfEntry);
+          });
+        }
+      }
+      
+      function getFID(onPerfEntry) {
+        if (onPerfEntry && onPerfEntry instanceof Function) {
+          import('web-vitals').then(({ getFID }) => {
+            getFID(onPerfEntry);
+          });
+        }
+      }
+      
+      function getFCP(onPerfEntry) {
+        if (onPerfEntry && onPerfEntry instanceof Function) {
+          import('web-vitals').then(({ getFCP }) => {
+            getFCP(onPerfEntry);
+          });
+        }
+      }
+      
+      function getLCP(onPerfEntry) {
+        if (onPerfEntry && onPerfEntry instanceof Function) {
+          import('web-vitals').then(({ getLCP }) => {
+            getLCP(onPerfEntry);
+          });
+        }
+      }
+      
+      function getTTFB(onPerfEntry) {
+        if (onPerfEntry && onPerfEntry instanceof Function) {
+          import('web-vitals').then(({ getTTFB }) => {
+            getTTFB(onPerfEntry);
+          });
+        }
+      }
+      
+      // Log performance metrics (optional)
+      const reportWebVitals = (metric) => {
+        console.log('Web Vital:', metric);
+      };
+      
+      getCLS(reportWebVitals);
+      getFID(reportWebVitals);
+      getFCP(reportWebVitals);
+      getLCP(reportWebVitals);
+      getTTFB(reportWebVitals);
+    </script>
   </body>
 </html>
